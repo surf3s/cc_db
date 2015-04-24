@@ -5,12 +5,14 @@ class LithicsInline(admin.StackedInline):
     model = Lithic
     extra = 0
     fieldsets = [
+        ('State', {
+            'fields': [('raw_material','cortex','alteration','edge_damage')] } ),
         ('Typology/Technolopgy', {
             'fields': [('dataclass','technique','form','scar_morphology'),('fb_type','fb_type_2','fb_type_3'),('retouched_edges','retouch_intensity','reprise')] } ),
         ('Platforms', {
-            'fields': [('platform_surface','platform_exterior'),('platform_width','platform_thickness','platform_angle')] } ),
+            'fields': [('platform_technique','platform_surface','platform_exterior'),('platform_width','platform_thickness','epa')] } ),
         ('Cores', {
-            'fields': [('core_shape','core_blank'),('core_surface_percentage','proximal_removals'),('prepared_platforms','flake_direction'),('scar_length','scar_width')] } ),
+            'fields': [('core_shape','core_blank','multiple'),('core_surface_percentage','proximal_removals'),('prepared_platforms','flake_direction'),('scar_length','scar_width')] } ),
         ('Measurements', {
             'fields': [('length','width','maximum_width','thickness','weight')] } ) ]
 
@@ -48,12 +50,14 @@ class Lithics_admin(admin.ModelAdmin):
     fieldsets = [
         ('Field Information', {
             'fields': [('cat_no','level','code')] } ),
+        ('State', {
+            'fields': [('raw_material','cortex','alteration','edge_damage')] } ),
         ('Typology/Technolopgy', {
             'fields': [('dataclass','technique','form','scar_morphology'),('fb_type','fb_type_2','fb_type_3'),('retouched_edges','retouch_intensity','reprise')] } ),
         ('Platforms', {
-            'fields': [('platform_surface','platform_exterior'),('platform_width','platform_thickness','platform_angle')] } ),
+            'fields': [('platform_technique','platform_surface','platform_exterior'),('platform_width','platform_thickness','epa')] } ),
         ('Cores', {
-            'fields': [('core_shape','core_blank'),('core_surface_percentage','proximal_removals'),('prepared_platforms','flake_direction'),('scar_length','scar_width')] } ),
+            'fields': [('core_shape','core_blank','multiple'),('core_surface_percentage','proximal_removals'),('prepared_platforms','flake_direction'),('scar_length','scar_width')] } ),
         ('Measurements', {
             'fields': [('length','width','maximum_width','thickness','weight')] } ) ]
     list_display = ('cat_no','unit','id_no','level','dataclass','technique','fb_type',)
